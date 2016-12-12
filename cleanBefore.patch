@@ -1,0 +1,78 @@
+From 077b3221cca31bafbd9d5893b2f35b616eadb510 Mon Sep 17 00:00:00 2001
+From: DeadSquirrel01 <m.marcaccini01@gmail.com>
+Date: Thu, 1 Dec 2016 18:15:08 +0100
+Subject: [PATCH] Sepolicy: clean before upgrade to N
+
+---
+ sepolicy/bootanim.te       | 1 -
+ sepolicy/cameraserver.te   | 5 -----
+ sepolicy/dex2oat.te        | 1 -
+ sepolicy/init.te           | 4 ----
+ sepolicy/rmt_storage.te    | 1 -
+ sepolicy/surfaceflinger.te | 1 -
+ sepolicy/zygote.te         | 1 -
+ 7 files changed, 14 deletions(-)
+ delete mode 100644 sepolicy/bootanim.te
+ delete mode 100644 sepolicy/cameraserver.te
+ delete mode 100644 sepolicy/dex2oat.te
+ delete mode 100644 sepolicy/init.te
+ delete mode 100644 sepolicy/rmt_storage.te
+ delete mode 100644 sepolicy/surfaceflinger.te
+ delete mode 100644 sepolicy/zygote.te
+
+diff --git a/sepolicy/bootanim.te b/sepolicy/bootanim.te
+deleted file mode 100644
+index 92bbb71..0000000
+--- a/sepolicy/bootanim.te
++++ /dev/null
+@@ -1 +0,0 @@
+-allow bootanim debugfs:file { open write };
+diff --git a/sepolicy/cameraserver.te b/sepolicy/cameraserver.te
+deleted file mode 100644
+index c9711ee..0000000
+--- a/sepolicy/cameraserver.te
++++ /dev/null
+@@ -1,5 +0,0 @@
+-allow cameraserver debugfs:file { open write };
+-allow cameraserver camera_socket:sock_file write;
+-allow cameraserver camera_prop:property_service set;
+-allow cameraserver init:unix_stream_socket connectto;
+-allow cameraserver property_socket:sock_file write;
+diff --git a/sepolicy/dex2oat.te b/sepolicy/dex2oat.te
+deleted file mode 100644
+index 4f744d1..0000000
+--- a/sepolicy/dex2oat.te
++++ /dev/null
+@@ -1 +0,0 @@
+-allow dex2oat debugfs:file { open write };
+diff --git a/sepolicy/init.te b/sepolicy/init.te
+deleted file mode 100644
+index 664d241..0000000
+--- a/sepolicy/init.te
++++ /dev/null
+@@ -1,4 +0,0 @@
+-allow init debugfs:dir mounton;
+-
+-allow init debugfs:file write;
+-allow init sdcardd_exec:file getattr;
+diff --git a/sepolicy/rmt_storage.te b/sepolicy/rmt_storage.te
+deleted file mode 100644
+index 74e9977..0000000
+--- a/sepolicy/rmt_storage.te
++++ /dev/null
+@@ -1 +0,0 @@
+-allow rmt_storage debugfs:file { open write };
+diff --git a/sepolicy/surfaceflinger.te b/sepolicy/surfaceflinger.te
+deleted file mode 100644
+index 19d58d2..0000000
+--- a/sepolicy/surfaceflinger.te
++++ /dev/null
+@@ -1 +0,0 @@
+-allow surfaceflinger debugfs:file { open write };
+diff --git a/sepolicy/zygote.te b/sepolicy/zygote.te
+deleted file mode 100644
+index 6e527f2..0000000
+--- a/sepolicy/zygote.te
++++ /dev/null
+@@ -1 +0,0 @@
+-allow zygote debugfs:file { open write };

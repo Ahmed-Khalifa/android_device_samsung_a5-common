@@ -39,15 +39,19 @@ TARGET_CPU_CORTEX_A53 := true
 # Kernel
 TARGET_KERNEL_ARCH := arm
 BOARD_DTBTOOL_ARGS := -2
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=enforcing
+#BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=enforcing
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_RAMDISK_OFFSET := 0x02000000
-BOARD_KERNEL_TAGS_OFFSET := 0x01e00000
+BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_SOURCE := kernel/samsung/msm8916
-TARGET_KERNEL_CONFIG := cm_a5ultexx_defconfig
-# TARGET_PREBUILT_KERNEL := device/samsung/a5-common/prebuilt/kernel
+TARGET_KERNEL_CONFIG := cm_a5ultexx_defconfig 
+#cm_a5ultexx_defconfig
+#TARGET_PREBUILT_KERNEL := device/samsung/a5-common/prebuilt/kernel
+
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --cmdline "console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=enforcing"
+
 
 # Toolchain
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
@@ -56,12 +60,12 @@ KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
 # Partition sizes
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 13631488
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 167286400 # Increased from 1572... to 1672... because the kernel is too small for recovery.
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2516582400  # If u want to build cm recovery use prebuilt kernel (uncomment the line) which is compressed with LZMA
-BOARD_PERSISTIMAGE_PARTITION_SIZE := 8388608    # and reset the size to 157286400
-BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 15728640  	# the default value is: 167286400 Increased from 1572... to 1672... because the kernel is too small for recovery.
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2411724800  	# If u want to build cm recovery use prebuilt kernel (uncomment the line) which is compressed with LZMA
+BOARD_PERSISTIMAGE_PARTITION_SIZE := 8388608 		#2516582400   # and reset the size to 157286400
+BOARD_CACHEIMAGE_PARTITION_SIZE := 314572800 		#209715200
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 12775813120
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 12775829504 	#12775813120
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Bluetooth
@@ -71,6 +75,7 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
 
 # Custom RIL class
+TARGET_RIL_VARIANT := caf
 BOARD_RIL_CLASS := ../../../device/samsung/a5-common/ril/
 USE_DEVICE_SPECIFIC_DATASERVICES := true
 
@@ -81,6 +86,7 @@ EXTENDED_FONT_FOOTPRINT := true
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
 USE_CUSTOM_AUDIO_POLICY := 1
+USE_XML_AUDIO_POLICY_CONF := 1
 
 # Charger
 BOARD_CHARGER_SHOW_PERCENTAGE := true
@@ -179,6 +185,7 @@ TARGET_RECOVERY_QCOM_RTC_FIX := true
 # Text Relocations
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
+#RECOVERY_VARIANT := twrp
 # TWRP
 ifeq ($(RECOVERY_VARIANT),twrp)
 TW_NO_REBOOT_BOOTLOADER := true
@@ -189,6 +196,8 @@ TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 100
 TW_MTP_DEVICE := "/dev/usb_mtp_gadget"
 TW_EXCLUDE_SUPERSU := true
+TW_USE_TOYBOX := true
+TWRP_NEW_THEME := true
 endif
 
 # Carliv Recovery
@@ -212,13 +221,13 @@ endif
 # MultiROM
 ifeq ($(RECOVERY_VARIANT),multirom)
 MR_INPUT_TYPE := type_b
-MR_INIT_DEVICES := device/samsung/a5ultexx/multirom/mr_init_devices.c
+MR_INIT_DEVICES := device/samsung/a53g/multirom/mr_init_devices.c
 MR_RD_ADDR := 0x82000000
 MR_DPI := xhdpi
 MR_DPI_FONT := 216
-MR_FSTAB := device/samsung/a5ultexx/recovery/twrp.fstab
+MR_FSTAB := device/samsung/a53g/recovery/twrp.fstab
 MR_KEXEC_MEM_MIN := 0x85700000
-MR_INFOS := device/samsung/a5ultexx/mrom_infos
+MR_INFOS := device/samsung/a53g/mrom_infos
 MR_NO_KEXEC := 4
 endif
 

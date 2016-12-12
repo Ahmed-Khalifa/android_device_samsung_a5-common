@@ -32,6 +32,7 @@ import init.qcom.usb.rc
 # TODO: split target specific parts in init.target.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug
+	chmod 0755 /sys/kernel/debug
 
     mkdir /efs 0771 system radio
     mkdir /firmware 0771 system system

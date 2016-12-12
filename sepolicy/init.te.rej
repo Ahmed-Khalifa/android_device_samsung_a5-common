@@ -1,0 +1,7 @@
+--- sepolicy/init.te
++++ sepolicy/init.te
+@@ -1,4 +0,0 @@
+-allow init debugfs:dir mounton;
+-
+-allow init debugfs:file write;
+-allow init sdcardd_exec:file getattr;

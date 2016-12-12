@@ -18,7 +18,8 @@ function extract() {
             mkdir -p $2/$DIR
         fi
         # Try CM target first
-        adb pull /system/$DEST $2/$DEST
+        	#adb pull /system/$DEST $2/$DEST
+        	cp ~/android/rr-nougat/device/samsung/a5-common/proprietary/$DEST $2/$DEST | true
         # if file does not exist try OEM target
         if [ "$?" != "0" ]; then
             adb pull /system/$FILE $2/$DEST
