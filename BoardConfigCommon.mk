@@ -39,18 +39,19 @@ TARGET_CPU_CORTEX_A53 := true
 # Kernel
 TARGET_KERNEL_ARCH := arm
 BOARD_DTBTOOL_ARGS := -2
-#BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=enforcing
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=enforcing
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_RAMDISK_OFFSET := 0x02000000
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_SOURCE := kernel/samsung/msm8916
-TARGET_KERNEL_CONFIG := cm_a5ultexx_defconfig 
-#cm_a5ultexx_defconfig
-#TARGET_PREBUILT_KERNEL := device/samsung/a5-common/prebuilt/kernel
+TARGET_KERNEL_CONFIG := cm_a5ultexx_defconfig
 
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --cmdline "console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=enforcing"
+#TARGET_PREBUILT_KERNEL := device/samsung/a5-common/prebuilt/kernel
+#BOARD_KERNEL_RAMDISK := device/samsung/a5-common/prebuilt/ramdisk.img
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+# --kernel $(TARGET_PREBUILT_KERNEL) --cmdline $(BOARD_KERNEL_CMDLINE) --base $(BOARD_KERNEL_BASE) --pagesize $(BOARD_KERNEL_PAGESIZE) --dt $(LOCAL_PATH)/dt.img 
 
 
 # Toolchain
