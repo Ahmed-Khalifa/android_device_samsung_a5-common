@@ -24,6 +24,7 @@
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
 LOCAL_PATH := device/samsung/a5-common
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/a5-common/include
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8916
@@ -46,13 +47,8 @@ BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_SOURCE := kernel/samsung/msm8916
-TARGET_KERNEL_CONFIG := cm_a5ultexx_defconfig
-
-#TARGET_PREBUILT_KERNEL := device/samsung/a5-common/prebuilt/kernel
-#BOARD_KERNEL_RAMDISK := device/samsung/a5-common/prebuilt/ramdisk.img
+TARGET_KERNEL_CONFIG := lineageos_a5ultexx_defconfig
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-# --kernel $(TARGET_PREBUILT_KERNEL) --cmdline $(BOARD_KERNEL_CMDLINE) --base $(BOARD_KERNEL_BASE) --pagesize $(BOARD_KERNEL_PAGESIZE) --dt $(LOCAL_PATH)/dt.img 
-
 
 # Toolchain
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
@@ -75,8 +71,9 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
 
-# Custom RIL class
+# RIL
 TARGET_RIL_VARIANT := caf
+BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 BOARD_RIL_CLASS := ../../../device/samsung/a5-common/ril/
 USE_DEVICE_SPECIFIC_DATASERVICES := true
 

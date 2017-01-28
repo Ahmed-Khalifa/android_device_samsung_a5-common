@@ -2,7 +2,6 @@
 /sys/devices/soc\.0/qpnp-linearcharger-[0-9a-f]+/power_supply/battery/capacity  u:object_r:sysfs_batteryinfo:s0
 
 # Bluetooth
-
 /efs/bluetooth(/.*)?			        u:object_r:bluetooth_efs_file:s0
 
 /efs/wifi(/.*)?			u:object_r:wifi_efs_file:s0
@@ -12,7 +11,6 @@
 # Camera
 /sys/devices/virtual/camera(/.*)?       u:object_r:sysfs_camera:s0
 /data/cam_socket.*                      u:object_r:camera_socket:s0
-
 
 # Workaround for input
 /sys/devices/soc.0/i2c.77/i2c-11/11-0020/input/input1/enabled		u:object_r:sysfs_input:s0
