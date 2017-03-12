@@ -1,6 +1,5 @@
 # RIL
 rild.libpath=/system/lib/libsec-ril.so
-rild.libpath2=/system/lib/libsec-ril-dsds.so
 rild.libargs=-d /dev/smd0
 ro.telephony.default_network=9
 ro.product_ship=true
@@ -14,8 +13,6 @@ telephony.lteOnGsmDevice=1
 ro.ril.telephony.mqanelements=6
 ro.telephony.ril.config=simactivation
 persist.radio.multisim.config=dsds
-ro.multisim.set_audio_params=true
-ro.multisim.simslotcount=2
 
 # Netmgrd
 ro.use_data_netmgrd=false
