@@ -164,13 +164,6 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
-    # NFC : Permissions for NFC
-    chmod 0660 /dev/sec-nfc
-    chown nfc nfc /dev/sec-nfc
-
-    chmod 0660 /dev/pn547
-    chown nfc nfc /dev/pn547
-
     # Accelerometer_sensor
     chown system radio /sys/class/sensors/accelerometer_sensor/raw_data
     chown system radio /sys/class/sensors/accelerometer_sensor/calibration
@@ -483,10 +476,6 @@ on post-fs-data
     chmod 2755 /data/misc/perfd
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
-
-    # NFC local data and nfcee xml storage
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
 
     # sec_efs_file
     mkdir /efs/sec_efs 0775 radio system
