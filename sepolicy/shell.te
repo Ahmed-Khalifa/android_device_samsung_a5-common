@@ -1,0 +1,7 @@
+allow shell adsprpcd_exec:file getattr;
+allow shell audiod_exec:file getattr;
+allow shell audioserver_exec:file getattr;
+allow shell blkid_exec:file getattr;
+allow shell bootanim_exec:file getattr;
+allow shell bootstat_exec:file getattr;
+allow shell btnvtool_exec:file getattr;
