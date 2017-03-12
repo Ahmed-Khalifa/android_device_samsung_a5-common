@@ -35,9 +35,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
@@ -100,6 +97,10 @@ PRODUCT_PACKAGES += \
     Snap \
     libmm-qcamera \
     camera.msm8916
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
 
 # GPS HAL
 PRODUCT_PACKAGES += \
@@ -234,9 +235,9 @@ PRODUCT_COPY_FILES += \
 
 # Prima opensource driver files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prima/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/prima/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/prima/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
+#    $(LOCAL_PATH)/prima/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
 
 # Wi-Fi
 PRODUCT_COPY_FILES += \
@@ -267,10 +268,6 @@ PRODUCT_PACKAGES += \
 # For TWRP
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab
-
-# Prebuilt Kernel
-#PRODUCT_COPY_FILES += \#                   uncomment these 2 lines
-#    $(LOCAL_PATH)/prebuilt/kernel:kernel#  for prebuilt kernel
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
