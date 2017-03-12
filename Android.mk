@@ -61,6 +61,18 @@ $(ISDB_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(ISDB_SYMLINKS)
 
+KM_IMAGES := \
+	keymaster.b00 keymaster.b01 keymaster.b02 keymaster.b03 keymaster.mdt
+
+KM_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/keymaster/,$(notdir $(KM_IMAGES)))
+$(KM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Keymaster firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/keymaste$(suffix $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(KM_SYMLINKS)
+
 # MCpay
 MCP_IMAGES := \
     mcpay.b00 mcpay.b01 mcpay.b02 mcpay.b03 mcpay.mdt
@@ -198,6 +210,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(PLAYREADY_SYMLINKS)
 # TZ
 TZ_IMAGES := \
     tz_ccm.b00 tz_ccm.b01 tz_ccm.b02 tz_ccm.b03 tz_ccm.mdt \
+    tz_iccc.b00 tz_iccc.b01 tz_iccc.b02 tz_iccc.b03 tz_iccc.mdt \
     tz_otp.b00 tz_otp.b01 tz_otp.b02 tz_otp.b03 tz_otp.mdt
 
 TZ_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(TZ_IMAGES)))
@@ -251,6 +264,25 @@ $(WV_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(WV_SYMLINKS)
+
+# Kiwi
+# Sem
+# SKMM
+# Venus
+FIRMWARE_IMAGES := \
+	kiwi.b00 kiwi.b01 kiwi.b02 kiwi.b03 kiwi.mdt \
+	sem.b00 sem.b01 sem.b02 sem.b03 sem.mdt \
+	skmm_ta.b00 skmm_ta.b01 skmm_ta.b02 skmm_ta.b03 skmm_ta.mdt \
+	venus.b00 venus.b01 venus.b02 venus.b03 venus.b04 venus.mdt
+
+FIRMWARE_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_IMAGES)))
+$(FIRMWARE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "SKMM and Venus Firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_SYMLINKS)
 
 # Create links for audcal data files
 $(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wcd9306; \
