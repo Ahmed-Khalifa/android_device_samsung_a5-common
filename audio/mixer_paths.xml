@@ -595,6 +595,10 @@
     </path>
 
     <path name="spk">
+        <ctl name="MI2S_RX Channels" value="Two" />
+        <ctl name="RX3 MIX1 INP1" value="RX1" />
+        <ctl name="RX3 MIX1 INP2" value="RX2" />
+        <ctl name="SPK DAC Switch" value="1" />
     </path>
 
     <path name="ear">
