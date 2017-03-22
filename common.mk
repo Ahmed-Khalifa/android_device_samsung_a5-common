@@ -271,7 +271,8 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SamsungA5RIL
+    ro.telephony.ril_class=SamsungA5RILv2
+#        ro.telephony.ril_class=MSM8916DSRIL
 
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
