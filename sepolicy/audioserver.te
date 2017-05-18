@@ -1,2 +1,2 @@
 allow audioserver system_file:file execmod;
-
+allow audioserver i2c_device:chr_file rw_file_perms;

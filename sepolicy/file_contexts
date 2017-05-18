@@ -15,9 +15,6 @@
 /sys/devices/soc.0/i2c.78/i2c-11/11-0020/input/input1/enabled		u:object_r:sysfs_input:s0
 /sys/devices/soc.0/i2c.72/i2c-12/12-0048/input/input3/enabled		u:object_r:sysfs_input:s0
 
-/sys/class/input/input3/enabled										u:object_r:sysfs_input:s0
-/sys/class/input/input1/enabled 									u:object_r:sysfs_input:s0
-
 # Tap to wake
 /sys/class/sec/sec_touchscreen/wake_gesture 		u:object_r:tap2wake_dev:s0
 /sys/class/sec/sec_touchscreen/ts_control 		u:object_r:tap2wake_dev:s0
@@ -30,3 +27,8 @@
 
 # EFS
 /dev/block/bootdevice/by-name/efs               u:object_r:modem_efs_partition_device:s0
+
+# Macloader
+/system/bin/macloader                                   u:object_r:macloader_exec:s0
+
+/sys/devices/soc.0/1c00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk 		u:object_r:sysfs:s0
