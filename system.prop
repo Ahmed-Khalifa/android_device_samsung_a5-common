@@ -13,6 +13,8 @@ telephony.lteOnGsmDevice=1
 ro.ril.telephony.mqanelements=6
 ro.telephony.ril.config=simactivation
 persist.radio.multisim.config=dsds
+ro.telephony.samsung.realcall=true
+ro.multisim.set_audio_params=true
 
 # Netmgrd
 ro.use_data_netmgrd=false
@@ -28,7 +30,7 @@ persist.hwc.ptor.enable=true
 ro.opengles.version=196608
 
 #Set usb,mtp config by default
-persist.sys.usb.config=mtp
+persist.sys.usb.config=adb,mtp
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
