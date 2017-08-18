@@ -219,10 +219,10 @@
 
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
-    <integer name="config_screenBrightnessSettingMinimum">10</integer>
+    <integer name="config_screenBrightnessSettingMinimum">3</integer>
 
     <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">10</integer>
+    <integer name="config_screenBrightnessDim">3</integer>
 
     <!-- Boolean indicating if current platform supports bluetooth wide band
          speech -->
@@ -261,9 +261,19 @@
 
     <bool name="config_enableWifiDisplay">true</bool>
 
+     <string name="config_networkLocationProviderPackageName" translatable="false">com.qualcomm.location</string>
+     <string name="config_fusedLocationProviderPackageName" translatable="false">com.qualcomm.location</string>
     <!-- If true, the screen can be rotated via the accelerometer in all 4
          rotations as the default behavior. -->
     <bool name="config_allowAllRotations">true</bool>
+    <!-- Enable doze powersaving -->
+    <bool name="config_enableAutoPowerModes">true</bool>
+      <!-- Enable doze mode -->
+      <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
+      <bool name="config_dozeAfterScreenOff">true</bool>
+     <!-- Screen brightness when dozing. -->
+     <integer name="config_screenBrightnessDoze">17</integer>
+     <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
 
     <!-- Set to true if the wifi display supports compositing content stored
          in gralloc protected buffers.  For this to be true, there must exist
@@ -376,5 +386,8 @@
     <!-- Older rotation sensors are not setting event.timestamp correctly. Setting to
          true will use SystemClock.elapsedRealtimeNanos() to set timestamp. -->
     <bool name="config_useSystemClockforRotationSensor">true</bool>
+    
+    <!-- Configuration to support SIM contact batch operation -->
+    <bool name="config_sim_phonebook_batch_operation">false</bool>
 </resources>
 
