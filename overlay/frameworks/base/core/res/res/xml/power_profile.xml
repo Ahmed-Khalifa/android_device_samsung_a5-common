@@ -25,6 +25,7 @@
         <value>998000</value>
         <value>1094400</value>
         <value>1190400</value>
+        <value>1209600</value>
     </array>
     <array name="cpu.active">
         <value>151</value>
