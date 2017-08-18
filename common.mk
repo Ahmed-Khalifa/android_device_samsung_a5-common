@@ -131,10 +131,6 @@ PRODUCT_PACKAGES += \
     libqcomfm_jni \
     qcom.fmradio
 
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
-
 # IPv6 tethering
 PRODUCT_PACKAGES += \
     ebtables \
@@ -179,7 +175,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libxml2 \
     Stk
-
+    
+# Ltrace
+PRODUCT_PACKAGES += \
+    ltrace
+    
+#Lineage SetupWizard
+PRODUCT_PACKAGES += \
+    LineageSetupWizard
+    
+# Adaway Adblocker
+PRODUCT_PACKAGES += \
+    Adaway
+    
 # Audio configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
@@ -271,8 +279,11 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SamsungA5RILv2
-#        ro.telephony.ril_class=MSM8916DSRIL
+    ro.telephony.ril_class=KlteRIL
+
+# Default prop
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=adb,mtp
 
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
